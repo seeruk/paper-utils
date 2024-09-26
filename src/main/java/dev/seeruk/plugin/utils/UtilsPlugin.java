@@ -5,7 +5,6 @@ import dev.jorel.commandapi.CommandAPIBukkitConfig;
 import dev.jorel.commandapi.CommandAPICommand;
 import dev.seeruk.plugin.utils.inventory.DisposalInventory;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class UtilsPlugin extends JavaPlugin {

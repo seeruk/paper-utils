@@ -26,35 +26,22 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
 
+    implementation "net.kyori:adventure-api:4.17.0"
+
     implementation "dev.jorel:commandapi-bukkit-shade-mojang-mapped:9.5.2"
     compileOnly "dev.jorel:commandapi-annotations:9.5.2"
     annotationProcessor "dev.jorel:commandapi-annotations:9.5.2"
 }
 
-def targetJavaVersion = 21
 java {
-    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
-    sourceCompatibility = javaVersion
-    targetCompatibility = javaVersion
-    if (JavaVersion.current() < javaVersion) {
-        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
-    }
+    toolchain.setLanguageVersion(JavaLanguageVersion.of(21))
 }
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
-
-    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
-        options.release.set(targetJavaVersion)
-    }
-}
-
-shadowJar {
+tasks.shadowJar {
     dependencies {
         include dependency("dev.jorel:commandapi-bukkit-shade-mojang-mapped:9.5.2")
     }
 
-    // TODO: Change this to my own package name
     relocate("dev.jorel.commandapi", "dev.seeruk.plugin.utils.commandapi")
 }
 
