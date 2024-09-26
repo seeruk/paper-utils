@@ -1,0 +1,4 @@
+name: seers-utils
+version: '1.0-SNAPSHOT'
+main: dev.seeruk.plugin.utils.UtilsPlugin
+api-version: '1.21'
