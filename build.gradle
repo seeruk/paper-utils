@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'io.github.goooler.shadow' version '8.1.7'
+    id 'xyz.jpenilla.run-paper' version '2.3.1'
 }
 
 group = 'dev.seeruk.plugin'
@@ -35,6 +36,11 @@ dependencies {
 
 java {
     toolchain.setLanguageVersion(JavaLanguageVersion.of(21))
+}
+
+tasks.runServer {
+    minecraftVersion("1.21.1")
+    jvmArgs("-Dcom.mojang.eula.agree=true")
 }
 
 tasks.shadowJar {
